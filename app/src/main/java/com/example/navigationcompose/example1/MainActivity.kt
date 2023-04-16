@@ -26,8 +26,8 @@ sealed class Destination(val route:String) {
   object Home: Destination("home")
   object Profile: Destination("profile")
   object List: Destination("list")
-  object Detail: Destination("detail/{elementId}"){
-      fun createRoute(elementId:Int) = "detail/$elementId"
+  object Detail: Destination("detail/{elementId}/{age}"){
+      fun createRoute(elementId:Int , age:Int) = "detail/$elementId/$age"
   }
 }
 
@@ -55,17 +55,19 @@ class MainActivity : ComponentActivity() {
 fun NavigationAppHost(navController: NavHostController){
 
     val ctx = LocalContext.current
-    
-    NavHost(navController = navController, startDestination = "home" ) {
+                                            // startDestination = "home"
+    NavHost(navController = navController, startDestination = Destination.Home.route ) {
         composable(Destination.Home.route) { HomeScreen(navController) }
         composable(Destination.Profile.route) { ProfileScreen() }
         composable(Destination.List.route) { ListScreen(navController) }
         composable(Destination.Detail.route) { navBackStackEntry ->
             val elementId = navBackStackEntry.arguments?.getString("elementId")
-            if(elementId == null){
-                Toast.makeText(ctx,"ElementId equired",Toast.LENGTH_LONG).show()
+            val age = navBackStackEntry.arguments?.getString("age")
+            var ss = age
+            if(elementId == null  || age == null){
+                Toast.makeText(ctx,"ElementId or Age required",Toast.LENGTH_LONG).show()
             }else{
-               DetailScreen(elementId = elementId.toInt())
+               DetailScreen(elementId = elementId.toInt() , age = age.toInt())
             }
         }
     }

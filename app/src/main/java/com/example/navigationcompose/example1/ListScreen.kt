@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -18,13 +17,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 
 @Composable
 fun ListScreen(navController: NavHostController) {
 
-    val elements = MutableList(20) { it }
+    val elements = MutableList(20) { it }  //create a list
 
     LazyColumn(modifier = Modifier.background(color = Color.LightGray)) {
         items(elements) {
@@ -36,7 +34,7 @@ fun ListScreen(navController: NavHostController) {
                     .clip(RoundedCornerShape(3.dp))
                     .background(color = Color.White)
                     .clickable {
-                      navController.navigate(Destination.Detail.createRoute(it))
+                      navController.navigate(Destination.Detail.createRoute(it , 25))
                     }
             ) {
               Text(text = "Element $it" , fontSize = 15.sp)
