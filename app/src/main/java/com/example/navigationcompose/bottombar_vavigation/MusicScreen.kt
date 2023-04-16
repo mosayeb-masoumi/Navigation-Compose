@@ -25,6 +25,6 @@ fun MusicScreen(navController: NavHostController) {
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
-        Text("Search Screen", fontSize = 25.sp, color = Color.Red)
+        Text("Music Screen", fontSize = 25.sp, color = Color.Yellow)
     }
 }

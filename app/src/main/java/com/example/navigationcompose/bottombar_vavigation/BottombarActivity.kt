@@ -269,21 +269,3 @@ fun NavigationAppHost(navController: NavHostController) {
 }
 
 
-//sealed class Destination(val route: String){
-//    object HomeScreen: Destination("home_screen")
-//    object SearchScreen: Destination("search_screen")
-//    object ProfileScreen: Destination("profile_screen")
-//}
-
-//@Composable
-//fun SecondExampleNavigationAppHost(navController: NavHostController){
-//
-//    val ctx = LocalContext.current
-//    // startDestination = "home"
-//    NavHost(navController = navController, startDestination = Destination.HomeScreen.route ) {
-//        composable(Destination.HomeScreen.route) { HomeScreen(navController) }
-//        composable(Destination.MusicScreen.route) { MusicScreen(navController) }
-//        composable(Destination.ProfileScreen.route) { ProfileScreen(navController) }
-//
-//    }
-//}
